@@ -1,0 +1,38 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+*~
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local previews and reports
+.codex-*
+
+# Houdini autosaves, backups, and generated caches
+autosave/
+backup/
+*.hip~
+*.bak
+*.bgeo
+*.bgeo.sc
+*.geo
+*.geo.sc
+*.sim
+*.vdb
+*.rat
+*.ifd
+*.pic
+
+# Local render and simulation output directories
+cache/
+caches/
+render/
+renders/
+render_output/
+sim/
+simulation_cache/
