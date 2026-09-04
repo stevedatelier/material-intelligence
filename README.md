@@ -124,10 +124,6 @@ Once one strand is stable, the system expands into hanks, continuous loops and i
 
 <sub><strong>Figure 03.2 — Form-specific reference.</strong> The supplied green hank appears beside the procedural infinity-yarn render used to study loop proportion, bundle density and twist direction.</sub>
 
-![Finished procedural infinity yarn with packed twisted strands, fiber breakup and a locally opened bundle](images/3d_renders/White_animated_infinity.0058.webp)
-
-<sub><strong>Figure 03.3 — Fiber-scale infinity yarn.</strong> The opened bundle exposes strand hierarchy while the packed side preserves the final yarn form.</sub>
-
 <table width="100%">
   <tr>
     <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20214445.webp" alt="First fiber-rich infinity-yarn development frame" width="100%"></td>
@@ -219,7 +215,7 @@ if (int(row) % 2 == 0) {
 
 A force-transmitting stitch representation would need persistent strand identity, ordered loop paths, contact pairs, frictional state and constraints that can slide, tighten, release and break. Those hidden relationships matter to a robot because the same visible fold can produce different resistance depending on how the yarn is connected.
 
-![Large finished render of a repeated procedural interlaced fabric field](images/3d_renders/Screenshot%202024-08-01%20143000.webp)
+![Large finished render of a repeated procedural interlaced fabric field](images/3d_renders/Screenshot%202024-08-01%20172840.png)
 
 <sub><strong>Figure 04.5 — Related interlacing experiment.</strong> This woven/interlaced field tests repetition, crossing density and local strand construction; it is distinct from the knit-loop system above.</sub>
 
@@ -242,8 +238,6 @@ The ball studies test two related representations: long twisted yarn wrapped int
 ![Early wrapped-yarn support and construction state in Houdini](images/houdini_process/Screenshot%202024-12-20%20234952.webp)
 
 ![Color-assignment and support-surface study in Houdini](images/houdini_process/Screenshot%202024-12-22%20234523.webp)
-
-![Resolved green yarn-ball viewport study](images/houdini_process/Screenshot%202024-12-23%20000952.webp)
 
 <sub><strong>Construction study.</strong> The sequence moves from support geometry and strand organization through per-thread variation to a coherent wrapped-yarn volume.</sub>
 
