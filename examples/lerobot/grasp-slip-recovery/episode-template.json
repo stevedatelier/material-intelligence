@@ -1,0 +1,26 @@
+{
+  "episode_id": "grasp-slip-recovery-000",
+  "status": "illustrative_template_not_exported_data",
+  "task": "grasp material, detect slip onset, correct grip, recover stable contact",
+  "source": {
+    "type": "simulation_or_hardware",
+    "scene": null,
+    "exported": false
+  },
+  "labels": {
+    "contact_state": ["none", "stable", "unstable"],
+    "slip_state": ["none", "onset", "slipping", "recovered"],
+    "deformation_state": ["none", "elastic", "permanent"],
+    "load_state": ["low", "rising", "high", "dropping"],
+    "failure_state": ["none", "onset", "failed"],
+    "recovery_state": ["none", "correcting", "recovered"]
+  },
+  "frames": [
+    {"phase":"grasp","contact_state":"none","slip_state":"none","deformation_state":"none","load_state":"low","failure_state":"none","recovery_state":"none"},
+    {"phase":"contact","contact_state":"stable","slip_state":"none","deformation_state":"elastic","load_state":"rising","failure_state":"none","recovery_state":"none"},
+    {"phase":"load_rises","contact_state":"stable","slip_state":"none","deformation_state":"elastic","load_state":"high","failure_state":"none","recovery_state":"none"},
+    {"phase":"slip_onset","contact_state":"unstable","slip_state":"onset","deformation_state":"elastic","load_state":"dropping","failure_state":"none","recovery_state":"none"},
+    {"phase":"correction","contact_state":"unstable","slip_state":"slipping","deformation_state":"elastic","load_state":"rising","failure_state":"none","recovery_state":"correcting"},
+    {"phase":"recovered","contact_state":"stable","slip_state":"recovered","deformation_state":"elastic","load_state":"rising","failure_state":"none","recovery_state":"recovered"}
+  ]
+}
