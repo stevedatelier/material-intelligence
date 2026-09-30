@@ -2,16 +2,24 @@
 
 This is a proposed frame-level annotation layer for a first Material Intelligence contribution to LeRobot. It is intentionally small: six categorical labels that describe physical state transitions a robot can observe and react to.
 
+![Six-stage wireframe of the target grasp-to-slip-to-recovery episode](./images/grasp-slip-recovery-wireframe.svg)
+
+**Status:** schema drafted. No grasp episode has been exported as training data yet. The target is a gripper-and-material scene whose contact, load, slip and failure events are written from simulation state to the same timeline as observations and actions.
+
+The labels are intended to be generated from measurable state, not guessed from appearance. In simulation, contact pairs, relative motion, constraint stretch or break events, and actuator/load signals can provide deterministic annotation rules.
+
+[Episode template](../examples/lerobot/grasp-slip-recovery/episode-template.json)
+
 ## Label schema
 
 | Label | Values | What it captures |
 |---|---|---|
-| `contact_state` | `none | stable | unstable` | Whether contact exists and whether it is holding reliably |
-| `slip_state` | `none | onset | slipping | recovered` | The transition into slip, active slip, and recovery |
-| `deformation_state` | `none | elastic | permanent` | Whether the material returns toward its prior shape or has changed irreversibly |
-| `load_state` | `low | rising | high | dropping` | Coarse force or actuator-load trend over time |
-| `failure_state` | `none | onset | failed` | The transition from intact structure toward material or constraint failure |
-| `recovery_state` | `none | correcting | recovered` | Whether the controller is actively correcting and whether stability has been restored |
+| `contact_state` | `none`, `stable`, `unstable` | Whether contact exists and whether it is holding reliably |
+| `slip_state` | `none`, `onset`, `slipping`, `recovered` | The transition into slip, active slip, and recovery |
+| `deformation_state` | `none`, `elastic`, `permanent` | Whether the material returns toward its prior shape or has changed irreversibly |
+| `load_state` | `low`, `rising`, `high`, `dropping` | Coarse force or actuator-load trend over time |
+| `failure_state` | `none`, `onset`, `failed` | The transition from intact structure toward material or constraint failure |
+| `recovery_state` | `none`, `correcting`, `recovered` | Whether the controller is actively correcting and whether stability has been restored |
 
 The highest-value labels for an initial material-interaction dataset are `slip_state`, `contact_state`, and `failure_state`. They describe transitions that can change the next robot action, rather than only describing appearance.
 
