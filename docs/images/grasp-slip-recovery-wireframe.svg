@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="420" viewBox="0 0 1440 420" role="img" aria-labelledby="title desc">
+  <title id="title">Grasp to slip to recovery episode wireframe</title>
+  <desc id="desc">Six-panel schematic showing grasp, contact, load rise, slip onset, correction, and recovered contact.</desc>
+  <style>
+    .bg{fill:#fff}.line{fill:none;stroke:#111;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .thin{fill:none;stroke:#555;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+    .dash{fill:none;stroke:#777;stroke-width:3;stroke-dasharray:10 9}
+    .txt{font:700 20px Arial,sans-serif;fill:#111}.sub{font:16px Arial,sans-serif;fill:#444}
+    .num{font:700 16px Arial,sans-serif;fill:#666}
+  </style>
+  <rect class="bg" width="1440" height="420"/>
+  <text x="40" y="42" class="txt">FIRST TARGET EPISODE: GRASP → SLIP → RECOVERY</text>
+  <text x="40" y="70" class="sub">Concept wireframe. The episode becomes training data only after synchronized simulation or hardware export.</text>
+
+  <!-- panel helper geometry is repeated explicitly for portability -->
+  <g transform="translate(30,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">01</text><text x="18" y="60" class="txt">GRASP</text>
+    <path d="M55 105 L95 140 L55 175 M160 105 L120 140 L160 175" class="line"/>
+    <path d="M98 92 C110 118 110 162 98 188" class="thin"/>
+    <path d="M118 92 C106 118 106 162 118 188" class="thin"/>
+    <text x="18" y="230" class="sub">contact: none</text><text x="18" y="252" class="sub">load: low</text>
+  </g>
+
+  <g transform="translate(260,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">02</text><text x="18" y="60" class="txt">CONTACT</text>
+    <path d="M65 105 L100 140 L65 175 M150 105 L115 140 L150 175" class="line"/>
+    <path d="M104 92 C112 118 112 162 104 188" class="thin"/>
+    <path d="M111 92 C103 118 103 162 111 188" class="thin"/>
+    <circle cx="101" cy="140" r="6" fill="#111"/><circle cx="114" cy="140" r="6" fill="#111"/>
+    <text x="18" y="230" class="sub">contact: stable</text><text x="18" y="252" class="sub">slip: none</text>
+  </g>
+
+  <g transform="translate(490,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">03</text><text x="18" y="60" class="txt">LOAD RISES</text>
+    <path d="M72 105 L103 140 L72 175 M143 105 L112 140 L143 175" class="line"/>
+    <path d="M105 88 C112 116 112 164 105 192" class="thin"/>
+    <path d="M110 88 C103 116 103 164 110 192" class="thin"/>
+    <path d="M107 208 L107 112 M95 126 L107 112 L119 126" class="dash"/>
+    <text x="18" y="230" class="sub">load: rising</text><text x="18" y="252" class="sub">deformation: elastic</text>
+  </g>
+
+  <g transform="translate(720,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">04</text><text x="18" y="60" class="txt">SLIP ONSET</text>
+    <path d="M72 105 L103 140 L72 175 M143 105 L112 140 L143 175" class="line"/>
+    <path d="M105 105 C112 132 112 180 105 208" class="thin"/>
+    <path d="M110 105 C103 132 103 180 110 208" class="thin"/>
+    <path d="M166 128 L166 187 M154 174 L166 187 L178 174" class="dash"/>
+    <text x="18" y="230" class="sub">contact: unstable</text><text x="18" y="252" class="sub">slip: onset</text>
+  </g>
+
+  <g transform="translate(950,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">05</text><text x="18" y="60" class="txt">CORRECTION</text>
+    <path d="M62 105 L102 140 L62 175 M153 105 L113 140 L153 175" class="line"/>
+    <path d="M104 100 C112 127 112 175 104 203" class="thin"/>
+    <path d="M111 100 C103 127 103 175 111 203" class="thin"/>
+    <path d="M42 140 L78 140 M55 128 L42 140 L55 152 M173 140 L137 140 M160 128 L173 140 L160 152" class="dash"/>
+    <text x="18" y="230" class="sub">recovery: correcting</text><text x="18" y="252" class="sub">load: rising</text>
+  </g>
+
+  <g transform="translate(1180,105)">
+    <rect x="0" y="0" width="215" height="270" rx="16" class="thin"/>
+    <text x="18" y="32" class="num">06</text><text x="18" y="60" class="txt">RECOVERED</text>
+    <path d="M65 105 L100 140 L65 175 M150 105 L115 140 L150 175" class="line"/>
+    <path d="M104 92 C112 118 112 162 104 188" class="thin"/>
+    <path d="M111 92 C103 118 103 162 111 188" class="thin"/>
+    <circle cx="101" cy="140" r="6" fill="#111"/><circle cx="114" cy="140" r="6" fill="#111"/>
+    <text x="18" y="230" class="sub">contact: stable</text><text x="18" y="252" class="sub">slip: recovered</text>
+  </g>
+</svg>
