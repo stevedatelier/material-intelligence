@@ -428,6 +428,23 @@ A machine-learning version of the study would need:
 4. **Matched real tests** — the same materials, actions and sensors outside Houdini, with uncertainty recorded.
 5. **Held-out materials and actions** — evaluation on structures and interactions absent from training.
 
+### Frame-level material labels for LeRobot
+
+For a first contribution, the annotation layer stays deliberately small:
+
+| Label | States |
+|---|---|
+| `contact_state` | `none | stable | unstable` |
+| `slip_state` | `none | onset | slipping | recovered` |
+| `deformation_state` | `none | elastic | permanent` |
+| `load_state` | `low | rising | high | dropping` |
+| `failure_state` | `none | onset | failed` |
+| `recovery_state` | `none | correcting | recovered` |
+
+The first target episode is intentionally simple: **grasp -> contact -> load rises -> slip onset -> correction -> recovered**.
+
+The strongest initial labels are `slip_state`, `contact_state`, and `failure_state` because they describe physical transitions that can change the robot's next action. See [the proposed LeRobot material-interaction label schema](./docs/lerobot-material-labels.md) for definitions and an example frame sequence.
+
 The useful target may be a latent material state: a compact representation that predicts the next response and helps choose the next safe action.
 
 ---
