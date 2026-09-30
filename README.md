@@ -34,6 +34,10 @@ This repository is a material-simulation study and a proposal for a machine-perc
 
 **Technical progression:** fiber → yarn → yarn systems → knitting and fabric construction → real-world comparison → simulation → deformation and failure → machine perception.
 
+![Overhead material study of white yarn balls at several fiber and strand scales](images/real_references/les-triconautes-0TZrwxl--Cg-unsplash.webp)
+
+<sub><strong>Material reference.</strong> Fiber, strand, packing and loose structure are the physical substrate behind the simulations and interaction labels below.</sub>
+
 ---
 
 ## Contents
@@ -78,10 +82,6 @@ The current Houdini scenes expose geometry, constraints, deformation and topolog
 ## 02 — Reconstructing yarn from the fiber upward
 
 The study begins with a reconstruction problem: what structure must exist before yarn can return a meaningful physical response?
-
-![Overhead material study of white yarn balls at several fiber and strand scales](images/real_references/les-triconautes-0TZrwxl--Cg-unsplash.webp)
-
-<sub><strong>Material reference.</strong> Changes in strand diameter, twist, packing and loose fiber define the reconstruction problem before any procedural geometry is built.</sub>
 
 ![Close procedural yarn render showing repeated twisted strands packed into an infinity-hank form](images/3d_renders/Screenshot%202024-12-26%20070242.webp)
 
