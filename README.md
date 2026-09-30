@@ -18,6 +18,18 @@
 >
 > For robotics, that opens another channel for perception: learning from how matter responds to interaction.
 
+### LeRobot target: material interaction labels
+
+**For LeRobot.** This repo proposes a frame-level material-interaction label schema for contact, slip, deformation, load, failure and recovery. The labels are designed to come directly from simulation ground truth, where contact, constraint state and failure events are known on the timeline.
+
+**First target:** one grasp-to-slip-to-recovery episode.
+
+![Wireframe of a six-stage robot grasp episode: grasp, contact, load rise, slip onset, correction and recovered contact](docs/images/grasp-slip-recovery-wireframe.svg)
+
+**Status:** schema drafted. The grasp episode above is the target sequence, not exported training data yet. The next concrete step is a gripper-and-material simulation that writes synchronized observations and these labels frame by frame.
+
+[Open the label schema](./docs/lerobot-material-labels.md) · [Open the episode template](./examples/lerobot/grasp-slip-recovery/episode-template.json)
+
 This repository is a material-simulation study and a proposal for a machine-perception experiment. It does not train a perception model, infer physical parameters from camera footage, or claim sim-to-real validation. Its contribution is the controllable material substrate: fibers, paths, contacts, constraints and failures that can be changed, observed and measured.
 
 **Technical progression:** fiber → yarn → yarn systems → knitting and fabric construction → real-world comparison → simulation → deformation and failure → machine perception.
@@ -26,6 +38,7 @@ This repository is a material-simulation study and a proposal for a machine-perc
 
 ## Contents
 
+- [LeRobot target: material interaction labels](#lerobot-target-material-interaction-labels)
 - [01 — Material as a perceptual channel](#01--material-as-a-perceptual-channel)
 - [02 — Reconstructing yarn from the fiber upward](#02--reconstructing-yarn-from-the-fiber-upward)
 - [03 — Yarn systems and infinity form](#03--yarn-systems-and-infinity-form)
@@ -434,12 +447,12 @@ For a first contribution, the annotation layer stays deliberately small:
 
 | Label | States |
 |---|---|
-| `contact_state` | `none | stable | unstable` |
-| `slip_state` | `none | onset | slipping | recovered` |
-| `deformation_state` | `none | elastic | permanent` |
-| `load_state` | `low | rising | high | dropping` |
-| `failure_state` | `none | onset | failed` |
-| `recovery_state` | `none | correcting | recovered` |
+| `contact_state` | `none`, `stable`, `unstable` |
+| `slip_state` | `none`, `onset`, `slipping`, `recovered` |
+| `deformation_state` | `none`, `elastic`, `permanent` |
+| `load_state` | `low`, `rising`, `high`, `dropping` |
+| `failure_state` | `none`, `onset`, `failed` |
+| `recovery_state` | `none`, `correcting`, `recovered` |
 
 The first target episode is intentionally simple: **grasp -> contact -> load rises -> slip onset -> correction -> recovered**.
 
