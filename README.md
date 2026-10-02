@@ -4,22 +4,6 @@
 
 **Toward a common sensory language for AI and robotics.**
 
-### LeRobot target: material interaction labels
-
-**For LeRobot.** This repo proposes a frame-level material-interaction label schema for contact, slip, deformation, load, failure and recovery. The labels are designed to come directly from simulation ground truth, where contact, constraint state and failure events are known on the timeline.
-
-**First target:** one grasp-to-slip-to-recovery episode.
-
-![Wireframe of a six-stage robot grasp episode: grasp, contact, load rise, slip onset, correction and recovered contact](docs/images/grasp-slip-recovery-wireframe.svg)
-
-**Status:** schema drafted. The grasp episode above is the target sequence, not exported training data yet. The next concrete step is a gripper-and-material simulation that writes synchronized observations and these labels frame by frame.
-
-[Open the label schema](./docs/lerobot-material-labels.md) · [Open the episode template](./examples/lerobot/grasp-slip-recovery/episode-template.json)
-
-This repository is a material-simulation study and a proposal for a machine-perception experiment. It does not train a perception model, infer physical parameters from camera footage, or claim sim-to-real validation. Its contribution is the controllable material substrate: fibers, paths, contacts, constraints and failures that can be changed, observed and measured.
-
-**Technical progression:** fiber → yarn → yarn systems → knitting and fabric construction → real-world comparison → simulation → deformation and failure → machine perception.
-
 ![Overhead material study of white yarn balls at several fiber and strand scales](images/real_references/les-triconautes-0TZrwxl--Cg-unsplash.webp)
 
 <sub><strong>Material reference.</strong> Fiber, strand, packing and loose structure are the physical substrate behind the simulations and interaction labels below.</sub>
@@ -37,6 +21,22 @@ This repository is a material-simulation study and a proposal for a machine-perc
 > The goal is to test what an intelligent system can infer from those physical changes.
 >
 > For robotics, that opens another channel for perception: learning from how matter responds to interaction.
+
+### LeRobot target: material interaction labels
+
+**For LeRobot.** This repo proposes a frame-level material-interaction label schema for contact, slip, deformation, load, failure and recovery. The labels are designed to come directly from simulation ground truth, where contact, constraint state and failure events are known on the timeline.
+
+**First target:** one grasp-to-slip-to-recovery episode.
+
+![Wireframe of a six-stage robot grasp episode: grasp, contact, load rise, slip onset, correction and recovered contact](docs/images/grasp-slip-recovery-wireframe.svg)
+
+**Status:** schema drafted. The grasp episode above is the target sequence, not exported training data yet. The next concrete step is a gripper-and-material simulation that writes synchronized observations and these labels frame by frame.
+
+[Open the label schema](./docs/lerobot-material-labels.md) · [Open the episode template](./examples/lerobot/grasp-slip-recovery/episode-template.json)
+
+This repository is a material-simulation study and a proposal for a machine-perception experiment. It does not train a perception model, infer physical parameters from camera footage, or claim sim-to-real validation. Its contribution is the controllable material substrate: fibers, paths, contacts, constraints and failures that can be changed, observed and measured.
+
+**Technical progression:** fiber → yarn → yarn systems → knitting and fabric construction → real-world comparison → simulation → deformation and failure → machine perception.
 
 ---
 
