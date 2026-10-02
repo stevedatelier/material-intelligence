@@ -43,9 +43,9 @@ This repository is a material-simulation study and a proposal for a machine-perc
 ## Contents
 
 - [LeRobot target: material interaction labels](#lerobot-target-material-interaction-labels)
-- [01 — Material as a perceptual channel](#01--material-as-a-perceptual-channel)
-- [03 — Yarn systems and infinity form](#03--yarn-systems-and-infinity-form)
-- [02 — Reconstructing yarn from the fiber upward](#02--reconstructing-yarn-from-the-fiber-upward)
+- [01 — Yarn systems and infinity form](#01--yarn-systems-and-infinity-form)
+- [02 — Material as a perceptual channel](#02--material-as-a-perceptual-channel)
+- [03 — Reconstructing yarn from the fiber upward](#03--reconstructing-yarn-from-the-fiber-upward)
 - [04 — Knitting, loops and fabric construction](#04--knitting-loops-and-fabric-construction)
 - [05 — Yarn-ball systems and material variation](#05--yarn-ball-systems-and-material-variation)
 - [06 — Real material and simulated structure](#06--real-material-and-simulated-structure)
@@ -59,7 +59,72 @@ This repository is a material-simulation study and a proposal for a machine-perc
 
 ---
 
-## 01 — Material as a perceptual channel
+## 01 — Yarn systems and infinity form
+
+Once one strand is stable, the system expands into hanks, continuous loops and infinity-yarn arrangements.
+
+![Full Houdini viewport study of color-coded strand populations forming an infinity-yarn system](images/houdini_process/Screenshot%202024-12-25%20165402.webp)
+
+<sub><strong>Figure 01.1 — Strand system.</strong> Color separates the procedural populations before shading and makes packing, continuity and crossings inspectable.</sub>
+
+![Specific green infinity-hank reference displayed beside the corresponding Houdini yarn render](images/real_vs_draft-render/important_reference_vs_3d_to_include.webp)
+
+<sub><strong>Figure 01.2 — Form-specific reference.</strong> The supplied green hank appears beside the procedural infinity-yarn render used to study loop proportion, bundle density and twist direction.</sub>
+
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20214445.webp" alt="First fiber-rich infinity-yarn development frame" width="100%"></td>
+    <td width="50%" valign="top"><img src="images/3d_renders/White_animated_infinity.0063.webp" alt="Second fiber-rich infinity-yarn development frame" width="100%"></td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20214403.webp" alt="Third fiber-rich infinity-yarn development frame" width="100%"></td>
+    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20040943.webp" alt="Fourth fiber-rich infinity-yarn development frame" width="100%"></td>
+  </tr>
+</table>
+
+<sub><strong>Fiber-resolution progression.</strong> Successive frames compare strand definition, surface density, flyaway structure and the balance between coherent twist and fiber breakup.</sub>
+
+![Two procedural infinity-hank yarn studies beside the supplied real-yarn comparison](images/real_vs_draft-render/real-infinity-yard-vs-3d.webp)
+
+<sub><strong>Figure 01.4 — Infinity-yarn comparison.</strong> Two procedural reconstructions at left; the supplied real hank reference at right.</sub>
+
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20181041.webp" alt="Dark procedural infinity-yarn close-up" width="100%"></td>
+    <td width="50%" valign="top"><img src="images/real_references/b6b4e8ae0e0e6b14264a9d060a2b6954.jpg" alt="Dark green real-yarn reference close-up" width="100%"></td>
+  </tr>
+</table>
+
+<sub><strong>Twist and packing study.</strong> Equal-scale procedural and physical views compare bundle direction, compression, surface fibers and the legibility of individual plies.</sub>
+
+![Houdini playblast showing procedural yarn geometry building into an interlaced structure](docs/images/yarn-motion-study.webp)
+
+<sub><strong>Figure 01.5 — Construction over time.</strong> The source playblast reveals how repeated paths accumulate into a yarn system.</sub>
+
+The same yarn cannot be represented at full fiber density for every task. The scenes separate the light structure that is animated or solved from the denser geometry used to communicate the surface.
+
+| Stage in the inspected V7 graph | Points | Primitives | Role |
+|---|---:|---:|---|
+| `line2` | 500 | 1 | source path |
+| `copy1` | 25,000 | 50 | repeated strand guides at frame 1 |
+| `sweep8` | 52,800 | 1,200 | first volumetric bundle |
+| `sweep18` | 145,224 | 17,424 | 36-column nested sweep |
+| `sweep20` | 1,161,792 | 139,392 | eight-column secondary sweep |
+| `Out_Yarnad` | 277,891 | 33,630 | pruned output at frame 1 |
+
+`sweep18` uses 36 columns, a radius of about `0.005833`, and 720 full twists. `sweep20` uses eight columns, radius `0.004`, and −720 full twists. Resample lengths step from `0.022` to `0.01` and finally `0.008`; the three-yarn scene reaches `0.006`.
+
+![Color-coded fiber groups with a Houdini node information panel reporting over 26 million points](images/houdini_process/Screenshot%202024-12-25%20165425.webp)
+
+<sub><strong>Figure 01.6 — Expansion cost.</strong> The original debug capture reports 26,127,929 points at `/obj/thread7/merge4`.</sub>
+
+That 26.1-million-point state is evidence, not a recommended final representation. For rendering, explicit fibers can create breakup, occlusion and shadowing. For simulation or robotics, guide paths, contact structure and material state may carry more useful information at a fraction of the cost.
+
+The real question is task-dependent: which structure must remain explicit for the response being measured?
+
+---
+
+## 02 — Material as a perceptual channel
 
 A camera records appearance. Interaction exposes behavior.
 
@@ -79,78 +144,13 @@ The current Houdini scenes expose geometry, constraints, deformation and topolog
 
 ---
 
-## 03 — Yarn systems and infinity form
-
-Once one strand is stable, the system expands into hanks, continuous loops and infinity-yarn arrangements.
-
-![Full Houdini viewport study of color-coded strand populations forming an infinity-yarn system](images/houdini_process/Screenshot%202024-12-25%20165402.webp)
-
-<sub><strong>Figure 03.1 — Strand system.</strong> Color separates the procedural populations before shading and makes packing, continuity and crossings inspectable.</sub>
-
-![Specific green infinity-hank reference displayed beside the corresponding Houdini yarn render](images/real_vs_draft-render/important_reference_vs_3d_to_include.webp)
-
-<sub><strong>Figure 03.2 — Form-specific reference.</strong> The supplied green hank appears beside the procedural infinity-yarn render used to study loop proportion, bundle density and twist direction.</sub>
-
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20214445.webp" alt="First fiber-rich infinity-yarn development frame" width="100%"></td>
-    <td width="50%" valign="top"><img src="images/3d_renders/White_animated_infinity.0063.webp" alt="Second fiber-rich infinity-yarn development frame" width="100%"></td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20214403.webp" alt="Third fiber-rich infinity-yarn development frame" width="100%"></td>
-    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20040943.webp" alt="Fourth fiber-rich infinity-yarn development frame" width="100%"></td>
-  </tr>
-</table>
-
-<sub><strong>Fiber-resolution progression.</strong> Successive frames compare strand definition, surface density, flyaway structure and the balance between coherent twist and fiber breakup.</sub>
-
-![Two procedural infinity-hank yarn studies beside the supplied real-yarn comparison](images/real_vs_draft-render/real-infinity-yard-vs-3d.webp)
-
-<sub><strong>Figure 03.4 — Infinity-yarn comparison.</strong> Two procedural reconstructions at left; the supplied real hank reference at right.</sub>
-
-<table width="100%">
-  <tr>
-    <td width="50%" valign="top"><img src="images/3d_renders/Screenshot%202024-12-26%20181041.webp" alt="Dark procedural infinity-yarn close-up" width="100%"></td>
-    <td width="50%" valign="top"><img src="images/real_references/b6b4e8ae0e0e6b14264a9d060a2b6954.jpg" alt="Dark green real-yarn reference close-up" width="100%"></td>
-  </tr>
-</table>
-
-<sub><strong>Twist and packing study.</strong> Equal-scale procedural and physical views compare bundle direction, compression, surface fibers and the legibility of individual plies.</sub>
-
-![Houdini playblast showing procedural yarn geometry building into an interlaced structure](docs/images/yarn-motion-study.webp)
-
-<sub><strong>Figure 03.5 — Construction over time.</strong> The source playblast reveals how repeated paths accumulate into a yarn system.</sub>
-
-The same yarn cannot be represented at full fiber density for every task. The scenes separate the light structure that is animated or solved from the denser geometry used to communicate the surface.
-
-| Stage in the inspected V7 graph | Points | Primitives | Role |
-|---|---:|---:|---|
-| `line2` | 500 | 1 | source path |
-| `copy1` | 25,000 | 50 | repeated strand guides at frame 1 |
-| `sweep8` | 52,800 | 1,200 | first volumetric bundle |
-| `sweep18` | 145,224 | 17,424 | 36-column nested sweep |
-| `sweep20` | 1,161,792 | 139,392 | eight-column secondary sweep |
-| `Out_Yarnad` | 277,891 | 33,630 | pruned output at frame 1 |
-
-`sweep18` uses 36 columns, a radius of about `0.005833`, and 720 full twists. `sweep20` uses eight columns, radius `0.004`, and −720 full twists. Resample lengths step from `0.022` to `0.01` and finally `0.008`; the three-yarn scene reaches `0.006`.
-
-![Color-coded fiber groups with a Houdini node information panel reporting over 26 million points](images/houdini_process/Screenshot%202024-12-25%20165425.webp)
-
-<sub><strong>Figure 03.6 — Expansion cost.</strong> The original debug capture reports 26,127,929 points at `/obj/thread7/merge4`.</sub>
-
-That 26.1-million-point state is evidence, not a recommended final representation. For rendering, explicit fibers can create breakup, occlusion and shadowing. For simulation or robotics, guide paths, contact structure and material state may carry more useful information at a fraction of the cost.
-
-The real question is task-dependent: which structure must remain explicit for the response being measured?
-
----
-
-## 02 — Reconstructing yarn from the fiber upward
+## 03 — Reconstructing yarn from the fiber upward
 
 The study begins with a reconstruction problem: what structure must exist before yarn can return a meaningful physical response?
 
 ![Close procedural yarn render showing repeated twisted strands packed into an infinity-hank form](images/3d_renders/Screenshot%202024-12-26%20070242.webp)
 
-<sub><strong>Figure 02.1 — Strand construction.</strong> Nested twist remains legible from the individual ply to the packed yarn bundle.</sub>
+<sub><strong>Figure 03.1 — Strand construction.</strong> Nested twist remains legible from the individual ply to the packed yarn bundle.</sub>
 
 The construction is hierarchical:
 
@@ -164,11 +164,11 @@ The construction is hierarchical:
 
 ![Close render of dense white yarn fibers, loose flyaways and separated fine strands](images/3d_renders/White_animated_wool.0044.webp)
 
-<sub><strong>Figure 02.2 — Fiber-rich output.</strong> Fine strands, clumping and flyaways remain explicit at render scale.</sub>
+<sub><strong>Figure 03.2 — Fiber-rich output.</strong> Fine strands, clumping and flyaways remain explicit at render scale.</sub>
 
 ![Four project renders showing fiber-rich yarn construction and interlaced threading structures](images/real_vs_draft-render/3d_threading_simulation.webp)
 
-<sub><strong>Figure 02.3 — Threading and construction.</strong> Project renders move between dense fiber populations, coherent twist and open interlacing.</sub>
+<sub><strong>Figure 03.3 — Threading and construction.</strong> Project renders move between dense fiber populations, coherent twist and open interlacing.</sub>
 
 The base strand displacement in `/obj/thread7/attribwrangle5` is explicit:
 
