@@ -44,8 +44,8 @@ This repository is a material-simulation study and a proposal for a machine-perc
 
 - [LeRobot target: material interaction labels](#lerobot-target-material-interaction-labels)
 - [01 — Material as a perceptual channel](#01--material-as-a-perceptual-channel)
-- [02 — Reconstructing yarn from the fiber upward](#02--reconstructing-yarn-from-the-fiber-upward)
 - [03 — Yarn systems and infinity form](#03--yarn-systems-and-infinity-form)
+- [02 — Reconstructing yarn from the fiber upward](#02--reconstructing-yarn-from-the-fiber-upward)
 - [04 — Knitting, loops and fabric construction](#04--knitting-loops-and-fabric-construction)
 - [05 — Yarn-ball systems and material variation](#05--yarn-ball-systems-and-material-variation)
 - [06 — Real material and simulated structure](#06--real-material-and-simulated-structure)
@@ -76,52 +76,6 @@ The working hypothesis is that these responses could form a learnable sensory la
 | topology state | lost constraints, new edges and fragments | damage and the next safe action |
 
 The current Houdini scenes expose geometry, constraints, deformation and topology. Force/torque, vibration, sound and synchronized real-world sensing are the next experimental layer.
-
----
-
-## 02 — Reconstructing yarn from the fiber upward
-
-The study begins with a reconstruction problem: what structure must exist before yarn can return a meaningful physical response?
-
-![Close procedural yarn render showing repeated twisted strands packed into an infinity-hank form](images/3d_renders/Screenshot%202024-12-26%20070242.webp)
-
-<sub><strong>Figure 02.1 — Strand construction.</strong> Nested twist remains legible from the individual ply to the packed yarn bundle.</sub>
-
-The construction is hierarchical:
-
-1. A guide curve defines the material path.
-2. Copies form a strand bundle around that path.
-3. resampling controls segment length before each expansion.
-4. PolyFrame supplies a stable local frame.
-5. nested sweeps create strand and fiber volume.
-6. stochastic groups introduce several scales of irregularity.
-7. pruning and rendering reduce the visible output to the required scale.
-
-![Close render of dense white yarn fibers, loose flyaways and separated fine strands](images/3d_renders/White_animated_wool.0044.webp)
-
-<sub><strong>Figure 02.2 — Fiber-rich output.</strong> Fine strands, clumping and flyaways remain explicit at render scale.</sub>
-
-![Four project renders showing fiber-rich yarn construction and interlaced threading structures](images/real_vs_draft-render/3d_threading_simulation.webp)
-
-<sub><strong>Figure 02.3 — Threading and construction.</strong> Project renders move between dense fiber populations, coherent twist and open interlacing.</sub>
-
-The base strand displacement in `/obj/thread7/attribwrangle5` is explicit:
-
-```c
-float twistAmount = ch("twist_amount");
-float freq = ch("frequency");
-float amp = ch("amplitude");
-
-vector pos = @P;
-float angle = freq * pos.y;
-pos.x += amp * sin(angle + twistAmount);
-pos.z += amp * cos(angle + twistAmount);
-@P = pos;
-```
-
-In the inspected V7 scene, `frequency = 0.168` and `amplitude = 0.02`. The source line has 500 points; Bend closes it through 360°, and a second Bend applies −360° of twist. `copy1` is animated from 50 copies at frame 1 to 200 at frame 72.
-
-`PolyFrame3` writes the tangent to `N` and the second frame vector to `up`. That frame keeps the sweep cross-section oriented along a curved guide. A visual twist can be shaded; a force-bearing strand needs a consistent path and frame.
 
 ---
 
@@ -187,6 +141,52 @@ The same yarn cannot be represented at full fiber density for every task. The sc
 That 26.1-million-point state is evidence, not a recommended final representation. For rendering, explicit fibers can create breakup, occlusion and shadowing. For simulation or robotics, guide paths, contact structure and material state may carry more useful information at a fraction of the cost.
 
 The real question is task-dependent: which structure must remain explicit for the response being measured?
+
+---
+
+## 02 — Reconstructing yarn from the fiber upward
+
+The study begins with a reconstruction problem: what structure must exist before yarn can return a meaningful physical response?
+
+![Close procedural yarn render showing repeated twisted strands packed into an infinity-hank form](images/3d_renders/Screenshot%202024-12-26%20070242.webp)
+
+<sub><strong>Figure 02.1 — Strand construction.</strong> Nested twist remains legible from the individual ply to the packed yarn bundle.</sub>
+
+The construction is hierarchical:
+
+1. A guide curve defines the material path.
+2. Copies form a strand bundle around that path.
+3. resampling controls segment length before each expansion.
+4. PolyFrame supplies a stable local frame.
+5. nested sweeps create strand and fiber volume.
+6. stochastic groups introduce several scales of irregularity.
+7. pruning and rendering reduce the visible output to the required scale.
+
+![Close render of dense white yarn fibers, loose flyaways and separated fine strands](images/3d_renders/White_animated_wool.0044.webp)
+
+<sub><strong>Figure 02.2 — Fiber-rich output.</strong> Fine strands, clumping and flyaways remain explicit at render scale.</sub>
+
+![Four project renders showing fiber-rich yarn construction and interlaced threading structures](images/real_vs_draft-render/3d_threading_simulation.webp)
+
+<sub><strong>Figure 02.3 — Threading and construction.</strong> Project renders move between dense fiber populations, coherent twist and open interlacing.</sub>
+
+The base strand displacement in `/obj/thread7/attribwrangle5` is explicit:
+
+```c
+float twistAmount = ch("twist_amount");
+float freq = ch("frequency");
+float amp = ch("amplitude");
+
+vector pos = @P;
+float angle = freq * pos.y;
+pos.x += amp * sin(angle + twistAmount);
+pos.z += amp * cos(angle + twistAmount);
+@P = pos;
+```
+
+In the inspected V7 scene, `frequency = 0.168` and `amplitude = 0.02`. The source line has 500 points; Bend closes it through 360°, and a second Bend applies −360° of twist. `copy1` is animated from 50 copies at frame 1 to 200 at frame 72.
+
+`PolyFrame3` writes the tangent to `N` and the second frame vector to `up`. That frame keeps the sweep cross-section oriented along a curved guide. A visual twist can be shaded; a force-bearing strand needs a consistent path and frame.
 
 ---
 
