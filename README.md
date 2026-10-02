@@ -4,20 +4,6 @@
 
 **Toward a common sensory language for AI and robotics.**
 
-> **What if machines do not need to perceive the physical world the way humans do?**
->
-> **What is the common language of perception for AI?**
->
-> David Eagleman's [work on sensory substitution](https://pubmed.ncbi.nlm.nih.gov/36712151/) shows something remarkable: change the input channel and spatial information can be learned through the tongue or skin, without ever needing the eyes.
->
-> **Could changes in matter themselves become a sensory language?**
->
-> This project reconstructs yarn and knitted materials from the fiber level up, then simulates tension, compression, stretching, friction, deformation, unraveling, tearing and failure.
->
-> The goal is to test what an intelligent system can infer from those physical changes.
->
-> For robotics, that opens another channel for perception: learning from how matter responds to interaction.
-
 ### LeRobot target: material interaction labels
 
 **For LeRobot.** This repo proposes a frame-level material-interaction label schema for contact, slip, deformation, load, failure and recovery. The labels are designed to come directly from simulation ground truth, where contact, constraint state and failure events are known on the timeline.
@@ -37,6 +23,20 @@ This repository is a material-simulation study and a proposal for a machine-perc
 ![Overhead material study of white yarn balls at several fiber and strand scales](images/real_references/les-triconautes-0TZrwxl--Cg-unsplash.webp)
 
 <sub><strong>Material reference.</strong> Fiber, strand, packing and loose structure are the physical substrate behind the simulations and interaction labels below.</sub>
+
+> **What if machines do not need to perceive the physical world the way humans do?**
+>
+> **What is the common language of perception for AI?**
+>
+> David Eagleman's [work on sensory substitution](https://pubmed.ncbi.nlm.nih.gov/36712151/) shows something remarkable: change the input channel and spatial information can be learned through the tongue or skin, without ever needing the eyes.
+>
+> **Could changes in matter themselves become a sensory language?**
+>
+> This project reconstructs yarn and knitted materials from the fiber level up, then simulates tension, compression, stretching, friction, deformation, unraveling, tearing and failure.
+>
+> The goal is to test what an intelligent system can infer from those physical changes.
+>
+> For robotics, that opens another channel for perception: learning from how matter responds to interaction.
 
 ---
 
